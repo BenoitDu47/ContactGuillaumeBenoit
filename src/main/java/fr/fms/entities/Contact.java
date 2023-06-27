@@ -15,7 +15,8 @@ import java.io.Serializable;
 @Data @NoArgsConstructor @AllArgsConstructor @ToString
 public class Contact implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
     @NotNull
