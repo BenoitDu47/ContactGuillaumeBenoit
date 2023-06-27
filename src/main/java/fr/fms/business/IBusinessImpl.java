@@ -57,7 +57,7 @@ public class IBusinessImpl implements IBusiness {
 
     @Override
     public void deleteCategory(Long id) throws Exception {
-
+        categoryRepository.deleteById(id);
     }
 
 }
