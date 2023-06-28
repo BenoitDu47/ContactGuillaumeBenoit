@@ -29,12 +29,12 @@ public class IBusinessImpl implements IBusiness {
     }
 
     @Override
-    public Contact saveContact(Contact contact) throws Exception {
-        return contactRepository.save(contact);
+    public Contact saveContact(Contact cont){
+        return contactRepository.save(cont);
     }
 
     @Override
-    public void deleteContact(Long id) throws Exception {
+    public void deleteContact(Long id){
         contactRepository.deleteById(id);
     }
 

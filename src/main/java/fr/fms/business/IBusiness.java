@@ -12,9 +12,9 @@ import java.util.Optional;
 public interface IBusiness {
     List<Category> findAllCategory();
 
-    public Contact saveContact(Contact contact) throws Exception;
+    public Contact saveContact(Contact cont);
 
-    public void deleteContact(Long id) throws Exception;
+    public void deleteContact(Long id);
 
     List<Contact> findAllContact();
 

@@ -5,6 +5,7 @@ import fr.fms.business.IBusiness;
 import fr.fms.business.IBusinessImpl;
 import fr.fms.dao.CategoryRepository;
 import fr.fms.dao.ContactRepository;
+import fr.fms.entities.Category;
 import fr.fms.entities.Contact;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -32,8 +36,17 @@ public class ContactController {
     }
 
     @PostMapping("/contacts")
-    public Contact saveContact(@RequestBody Contact cont) throws Exception {
-        return ibusiness.saveContact(cont);
+    public ResponseEntity<Contact> saveContact(@RequestBody Contact cont) {
+        Contact contact = ibusiness.saveContact(cont);
+        if (Objects.isNull(contact)) {
+            return ResponseEntity.noContent().build();
+        }
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(contact.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
     }
 
     @DeleteMapping("/contacts/{id}")
