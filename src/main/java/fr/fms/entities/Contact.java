@@ -1,6 +1,5 @@
 package fr.fms.entities;
 
-
 import lombok.*;
 
 import javax.persistence.*;
@@ -35,8 +34,7 @@ public class Contact implements Serializable {
     @Digits(fraction=0, integer=10, message="Numéro invalide")
     private String phone;
 
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Category category;
 
 }
