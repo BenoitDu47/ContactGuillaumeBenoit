@@ -6,6 +6,7 @@ import fr.fms.entities.Contact;
 import fr.fms.entities.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +14,12 @@ import java.util.Optional;
 public class IBusinessImpl implements IBusiness {
     @Autowired
     ContactRepository contactRepository;
-    @Autowired
 
-    CategoryRepository categoryRepository;public List<Contact> findAll() {
+    @Autowired
+    CategoryRepository categoryRepository;
+
+    @Override
+    public List<Contact> findAllContact() {
         return contactRepository.findAll();
     }
 
@@ -28,20 +32,23 @@ public class IBusinessImpl implements IBusiness {
     public Contact saveContact(Contact contact) throws Exception {
         return contactRepository.save(contact);
     }
+
     @Override
     public void deleteContact(Long id) throws Exception {
         contactRepository.deleteById(id);
+    }
 
-    CategoryRepository categoryRepository;
-
-    public List<Category> findAll() {
+    @Override
+    public List<Category> findAllCategory() {
         return categoryRepository.findAll();
     }
 
+    @Override
     public Category saveCategory(Category c) {
         return categoryRepository.save(c);
     }
 
+    @Override
     public void deleteCategory(Long id) {
         categoryRepository.deleteById(id);
     }
@@ -49,6 +56,5 @@ public class IBusinessImpl implements IBusiness {
     @Override
     public Optional<Category> readCategory(Long id) {
         return categoryRepository.findById(id);
-
     }
 }

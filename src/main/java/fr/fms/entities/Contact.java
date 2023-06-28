@@ -11,7 +11,10 @@ import java.io.Serializable;
 
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor @ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Contact implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -19,19 +22,19 @@ public class Contact implements Serializable {
 
     private Long id;
     @NotNull
-    @Size(min=1 , max=25)
+    @Size(min = 1, max = 25)
     private String name;
     @NotNull
-    @Size(min=1, max=25)
+    @Size(min = 1, max = 25)
     private String firstName;
     @NotNull
     @Email
     private String email;
     @NotNull
-    @Size(min = 5, max= 50)
+    @Size(min = 5, max = 50)
     private String address;
     @NotNull
-    @Digits(fraction=0, integer=10, message="Numéro invalide")
+    @Digits(fraction = 0, integer = 10, message = "Numéro invalide")
     private String phone;
 
     @ManyToOne

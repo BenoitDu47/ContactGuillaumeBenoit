@@ -10,13 +10,13 @@ import java.util.Optional;
 
 @Service
 public interface IBusiness {
-    List<Category> findAll();
+    List<Category> findAllCategory();
 
     public Contact saveContact(Contact contact) throws Exception;
 
     public void deleteContact(Long id) throws Exception;
 
-    List<Contact> findAll();
+    List<Contact> findAllContact();
 
     Optional<Contact> readContact(Long id);
 

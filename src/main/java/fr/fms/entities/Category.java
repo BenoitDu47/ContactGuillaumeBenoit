@@ -12,7 +12,10 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor @ToString(exclude= {"contacts"})
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = {"contacts"})
 public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
