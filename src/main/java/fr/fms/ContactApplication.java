@@ -24,7 +24,7 @@ public class ContactApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		generateDatas();
+		//generateDatas();
 	}
 
 	private void generateDatas() {

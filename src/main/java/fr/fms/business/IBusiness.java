@@ -1,28 +1,18 @@
 package fr.fms.business;
 
 import fr.fms.entities.Category;
-import fr.fms.entities.Contact;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface IBusiness {
+    List<Category> findAll();
 
-    public void createContact(Contact contact) throws Exception;
+    Category saveCategory(Category c);
 
-    public void updateContact(Contact contact) throws Exception;
+    void deleteCategory(Long id);
 
-    public void saveContact(Contact contact) throws Exception;
-
-    public void deleteContact(Long id) throws Exception;
-
-    Contact findById(Long id) throws Exception;
-
-    public void createCategory(Category category) throws Exception;
-
-    public void updateCategory(Category category) throws Exception;
-
-    public void saveCategory(Contact category) throws Exception;
-
-    public void deleteCategory(Long id) throws Exception;
-
+    Optional<Category> readCategory(Long id);
 }
