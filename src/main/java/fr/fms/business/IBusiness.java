@@ -26,4 +26,6 @@ public interface IBusiness {
 
     Optional<Category> readCategory(Long id);
 
+    Optional<Contact> getById(Long id);
+
 }

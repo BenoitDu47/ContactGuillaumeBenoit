@@ -57,4 +57,9 @@ public class IBusinessImpl implements IBusiness {
     public Optional<Category> readCategory(Long id) {
         return categoryRepository.findById(id);
     }
+
+    @Override
+    public Optional<Contact> getById(Long id) {
+        return contactRepository.findById(id);
+    }
 }

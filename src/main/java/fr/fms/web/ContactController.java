@@ -19,14 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:4200/")
 @RestController
@@ -37,13 +36,17 @@ public class ContactController {
     IBusiness ibusiness;
 
     @GetMapping("/contacts")
-    public List<Contact> contacts() {
-        List<Contact> contacts;
-
-        contacts = ibusiness.findAllContact();
-        return contacts;
+    public List<Contact> contacts() throws Exception {
+        return ibusiness.findAllContact();
     }
 
+
+    @GetMapping(path="/Imgcontacts/{id}")
+    public byte[] getPhoto(@PathVariable("id") Long id) throws Exception{
+        Contact Contact  = ibusiness.getById(id).get();
+
+        return Files.readAllBytes(Paths.get(Contact.getImage()));
+    }
     @PostMapping("/contacts")
     public ResponseEntity<Contact> saveContact(@RequestParam("file") MultipartFile file, @RequestParam("contact") String contact) throws IOException {
         System.out.println(contact);
@@ -52,7 +55,7 @@ public class ContactController {
         Path path = Paths.get(filePath);
         Files.write(path, file.getBytes());
         contac.setImage(filePath);
-       // file.transferTo(new File(FOLDER));
+        // file.transferTo(new File(FOLDER));
         Contact cont = ibusiness.saveContact(contac);
         if (Objects.isNull(cont)) {
             return ResponseEntity.noContent().build();
