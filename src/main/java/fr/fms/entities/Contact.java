@@ -37,6 +37,9 @@ public class Contact implements Serializable {
     @Digits(fraction = 0, integer = 10, message = "Numéro invalide")
     private String phone;
 
+    @NotNull
+    private String image;
+
     @ManyToOne
     private Category category;
 
