@@ -12,6 +12,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
@@ -29,7 +30,7 @@ public class CategoryController {
     @PostMapping("/categories")
     public ResponseEntity<Category> saveCategory(@RequestBody Category c) {
         Category category = business.saveCategory(c);
-        if(Objects.isNull(category)) {
+        if (Objects.isNull(category)) {
             return ResponseEntity.noContent().build();
         }
         URI location = ServletUriComponentsBuilder

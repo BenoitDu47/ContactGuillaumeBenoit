@@ -29,12 +29,12 @@ public class IBusinessImpl implements IBusiness {
     }
 
     @Override
-    public Contact saveContact(Contact cont){
+    public Contact saveContact(Contact cont) {
         return contactRepository.save(cont);
     }
 
     @Override
-    public void deleteContact(Long id){
+    public void deleteContact(Long id) {
         contactRepository.deleteById(id);
     }
 

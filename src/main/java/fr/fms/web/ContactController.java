@@ -41,12 +41,13 @@ public class ContactController {
     }
 
 
-    @GetMapping(path="/Imgcontacts/{id}")
-    public byte[] getPhoto(@PathVariable("id") Long id) throws Exception{
-        Contact Contact  = ibusiness.getById(id).get();
+    @GetMapping(path = "/Imgcontacts/{id}")
+    public byte[] getPhoto(@PathVariable("id") Long id) throws Exception {
+        Contact Contact = ibusiness.getById(id).get();
 
         return Files.readAllBytes(Paths.get(Contact.getImage()));
     }
+
     @PostMapping("/contacts")
     public ResponseEntity<Contact> saveContact(@RequestParam("file") MultipartFile file, @RequestParam("contact") String contact) throws IOException {
         System.out.println(contact);
